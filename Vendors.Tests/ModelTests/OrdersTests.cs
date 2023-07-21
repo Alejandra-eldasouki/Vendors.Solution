@@ -17,7 +17,7 @@ namespace Vendors.Tests
       [TestMethod]
       public void OrderConstructor_CreatesInstancOfOrder_Order()
       {
-        Order addOrder = new Order("weekly", "ciabatta", 50, "5/7/2021");
+        Order addOrder = new Order("weekly", "ciabatta", 50, "1/1/2023");
         Assert.AreEqual(typeof(Order), addOrder.GetType());
       }
 
@@ -27,7 +27,7 @@ namespace Vendors.Tests
         string orderTitle = "weekly";
         string description = "ciabatta";
         int price = 50;
-        string date = "5/7/2021";
+        string date = "1/1/2023";
 
         Order newOrder = new Order(orderTitle, description, price, date);
         string resultTitle = newOrder.OrderTitle;
@@ -47,7 +47,7 @@ namespace Vendors.Tests
         string orderTitle = "daily";
         string description = "pastries";
         int price = 25;
-        string date = "3/3/2022";
+        string date = "1/1/2023";
 
         Order newOrder = new Order(orderTitle, description, price, date);
         string resultTitleNew = newOrder.OrderTitle;
@@ -75,12 +75,12 @@ namespace Vendors.Tests
         string orderTitle = "weekly";
         string description = "ciabatta";
         int price = 50;
-        string date = "1/1/2021";
+        string date = "1/1/2023";
 
         string orderTitle2 = "daily";
         string description2 = "pastries";
         int price2 = 25;
-        string date2 = "1/2/2021";
+        string date2 = "1/2/2023";
 
         Order newOrder = new Order(orderTitle, description, price, date);
         Order newOrder1 = new Order(orderTitle2, description2, price2, date2);
