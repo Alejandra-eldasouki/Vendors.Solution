@@ -1,0 +1,21 @@
+@using Vendors.Models;
+@{
+    var selectedVendor = ViewData["Vendor"] as Vendor;
+    var vendorOrders = ViewData["Orders"] as List<Order>;
+}
+
+<h1>Orders for @selectedVendor.Name:</h1>
+
+@if (vendorOrders.Count == 0)
+{
+    <h3>No orders for @selectedVendor.Name yet</h3>
+}
+else
+{
+    <ul>
+        @foreach (var order in vendorOrders)
+        {
+            <li>@order.OrderTitle - @order.Date</li>
+        }
+    </ul>
+}
