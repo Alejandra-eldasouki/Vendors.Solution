@@ -1,11 +1,19 @@
 @using Vendors.Models;
-<h1>Vendors:</h1>
+<h1>Current Vendors</h1>
 
-@if (Model.Count == 0)
+ @if (@Model.Count == 0)
 {
-    <h3>No vendors added yet</h3>
-}
-@foreach (Vendor vendor in Model)
-{
-    <p><a href="@Url.Action("VendorOrders", "Home", new { id = vendor.Id })">@vendor.Name</a></p>
-}
+  <h4>Please add a new Vendor</h4>
+} 
+
+<ul>
+  @foreach (Vendor vend in Model)
+  {
+    <li><h4><a href="/vendor/@vend.Id">@vend.Name</a></h4></li>
+    <ul><h5>@vend.VendorDescription</h5></ul>
+    
+
+  }
+</ul>
+  <p><a href='/'>Click here to go back</a></p>
+  <p><a href='/Vendors/new'>or here to add a vendor</a></p>
