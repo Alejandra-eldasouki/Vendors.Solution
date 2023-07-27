@@ -27,16 +27,19 @@ namespace Vendors.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("/vendors/{id}")]
-        public ActionResult Show(int id)
-        {
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            Vendor selectedVendor = Vendor.Find(id);
-            List<Order> vendorOrders = selectedVendor.Orders;
-            model.Add("vendor", selectedVendor);
-            model.Add("orders", vendorOrders);
-            return View(model);
-        }
+        [HttpPost("/vendor/{vendorId}/orders")]
+      public ActionResult Create(int vendorId,string orderTitle,string orderPrice, string orderDescription)
+      {
+        Dictionary<string,object> model = new Dictionary<string, object> ();
+        Vendor foundVend = Vendor.Find(vendorId);
+        Order newOrd = new Order(orderTitle,orderPrice,orderDescription);
+        foundVend.AddOrder(newOrd);
+        List<Order> selectedOrder = foundVend.Orders;
+        
+        model.Add("order",selectedOrder);
+        model.Add("vendor",foundVend);
+        return View("Show",model);
+      }
         
     }
 }

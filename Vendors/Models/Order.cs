@@ -13,9 +13,10 @@ namespace Vendors.Models
      public int Id { get; set; }
 
      private static List<Order> _instances = new List<Order> {};
+        private string orderPrice;
+        private string orderDescription;
 
-
-    public Order(string orderTitle, string description, int price, string date)
+        public Order(string orderTitle, string description, int price, string date)
     {
         OrderTitle = orderTitle;
         Description = description;
@@ -25,7 +26,14 @@ namespace Vendors.Models
         Id = _instances.Count;
     }
 
-    public static List<Order> GetAll()
+        public Order(string orderTitle, string orderPrice, string orderDescription)
+        {
+            OrderTitle = orderTitle;
+            this.orderPrice = orderPrice;
+            this.orderDescription = orderDescription;
+        }
+
+        public static List<Order> GetAll()
   {
     return _instances;
   }
