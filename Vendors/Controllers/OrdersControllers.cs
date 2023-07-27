@@ -26,10 +26,11 @@ namespace Vendors.Controllers
             return View(model);
         }
 
-        [HttpPost("/vendors/{vendorId}/orders")]
-       [HttpPost("/vendors/{vendorId}/orders")]
-public ActionResult CreateOrder(int vendorId, string orderTitle, string description, double price, string date)
+
+[HttpPost("/vendors/{vendorId}/orders")]
+public ActionResult CreateOrder(int vendorId, string orderTitle, string description, int price, string date)
 {
+
     Vendor vendor = Vendor.Find(vendorId);
     if (vendor == null)
     {

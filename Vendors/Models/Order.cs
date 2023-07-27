@@ -26,12 +26,13 @@ namespace Vendors.Models
         Id = _instances.Count;
     }
 
-        public Order(string orderTitle, string orderPrice, string orderDescription)
-        {
-            OrderTitle = orderTitle;
-            this.orderPrice = orderPrice;
-            this.orderDescription = orderDescription;
-        }
+       public Order(string orderTitle, string orderPrice, string orderDescription)
+{
+    OrderTitle = orderTitle;
+    this.orderPrice = orderPrice;
+    this.orderDescription = orderDescription;
+    _instances.Add(this); 
+}
 
         public static List<Order> GetAll()
   {

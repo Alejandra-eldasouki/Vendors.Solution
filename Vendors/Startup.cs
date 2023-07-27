@@ -28,17 +28,27 @@ namespace Vendors
       app.UseDeveloperExceptionPage();
       app.UseRouting();
 
-      app.UseEndpoints(routes =>
-      {
-        routes.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-      });
 
-      app.UseStaticFiles();
-      
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("Hello World!");
-      });
-    }
+
+    // Other middleware configurations
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "vendors",
+            pattern: "/vendors/{action}/{id?}", // Make sure {id} is optional with ?
+            defaults: new { controller = "Vendors", action = "Index" });
+
+        endpoints.MapControllerRoute(
+            name: "orders",
+            pattern: "/orders/{action}/{id?}", // Make sure {id} is optional with ?
+            defaults: new { controller = "Orders", action = "Index" });
+
+        endpoints.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+    });
+}
+
   }
 }
